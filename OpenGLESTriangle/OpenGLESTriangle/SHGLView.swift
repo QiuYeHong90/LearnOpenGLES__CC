@@ -37,8 +37,6 @@ class SHGLView: UIView {
     func initCommon() {
         self.setupLayer()
         self.setupContext()
-        self.setupBuffer()
-        self.setupProgram()
     }
     fileprivate func setupLayer() {
         let eagLayer = layer as? CAEAGLLayer
@@ -128,6 +126,8 @@ class SHGLView: UIView {
             0, 0, 1, 1
         ]
         
+        
+        
         // 加载顶点数据
         glVertexAttribPointer(positionSlot, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, vertices )
         glEnableVertexAttribArray(positionSlot)
@@ -142,10 +142,13 @@ class SHGLView: UIView {
         //  向openGLES 发起渲染命令请求
         myContext?.presentRenderbuffer(Int(GL_RENDERBUFFER))
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        self.destoryRenderAndFrameBuffer()
-        self.render()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        destoryRenderAndFrameBuffer()
+        setupBuffer()
+        setupProgram()
+        
+        render()
     }
+    
 }
