@@ -97,6 +97,7 @@ void RenderScene(void)
 //
     //传递到存储着色器，即GLT_SHADER_IDENTITY着色器，这个着色器只是使用指定颜色以默认笛卡尔坐标第在屏幕上渲染几何图形
     // GLT_SHADER_FLAT  代表平面
+//    identify
     shaderManager.UseStockShader(GLT_SHADER_FLAT,finalMatri,vRed);
     
     
