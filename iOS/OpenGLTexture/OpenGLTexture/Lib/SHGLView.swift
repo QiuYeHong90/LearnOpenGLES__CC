@@ -141,12 +141,12 @@ class SHGLView: UIView {
             // 解决1:glsl 里面 反转 y 轴(gl_Position = vec4(vPosition.x,-vPosition.y,vPosition.z,1.0))
             // 解决2:纹理坐标(s,t) -> (s,abs(t - 1))
             let vertices: [GLfloat] = [
-                1, 1, -1,       1, 1,   // 右上               1, 0
-                1, -1, -1,      1, 0,   // 右下               1, 1
-                -1, -1, -1,     0, 0,   // 左下               0, 1
-                -1, -1, -1,     0, 0,   // 左下               0, 1
-                -1, 1, -1,      0, 1,   // 左上               0, 0
-                1, 1, -1,       1, 1    // 右上               1, 0
+                0.2, 0.2, -1,       1, 1,   // 右上               1, 0
+                0.2, -0.2, -1,      1, 0,   // 右下               1, 1
+                -0.2, -0.2, -1,     0, 0,   // 左下               0, 1
+                -0.2, -0.2, -1,     0, 0,   // 左下               0, 1
+                -0.2, 0.2, -1,      0, 1,   // 左上               0, 0
+                0.2, 0.2, -1,       1, 1    // 右上               1, 0
             ]
 
 
@@ -179,7 +179,7 @@ class SHGLView: UIView {
             glEnableVertexAttribArray(GLuint(textCoordSlot))
 
 
-            setupTexture(fileName: "test1.png")
+            setupTexture(fileName: "fffss.png")
 
             // 绘制
             glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)
@@ -208,8 +208,8 @@ class SHGLView: UIView {
         //    https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/
         //        GL_TEXTURE_MIN_FILTER 缩小的时候 线性过滤 GL_TEXTURE_MAG_FILTER 放大的时候
         // 为当前绑定的纹理对象设置环绕、过滤方式
-        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_NEAREST );
-        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_NEAREST );
+        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR );
+        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR );
         //    MARK: 纹理环绕方式
         /**
          MARK: 纹理环绕方式
@@ -218,8 +218,8 @@ class SHGLView: UIView {
          GL_CLAMP_TO_EDGE    纹理坐标会被约束在0到1之间，超出的部分会重复纹理坐标的边缘，产生一种边缘被拉伸的效果。
          GL_CLAMP_TO_BORDER    超出的坐标为用户指定的边缘颜色。
          */
-        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GL_REPEAT);
-        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_T), GL_REPEAT);
+        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GL_CLAMP_TO_EDGE);
+        glTexParameteri( GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_T), GL_CLAMP_TO_EDGE);
         
         
         
@@ -227,8 +227,9 @@ class SHGLView: UIView {
         let width = spriteImage.width
         let height = spriteImage.height
         // 为图片分配内存 rbga 每个像素点 4个字节 所以内存width * height * 4 个字节 一个字节 8bit
-        let spriteData = calloc(width * height * 4, MemoryLayout<GLubyte>.size)
         
+        
+        let spriteData = calloc(width * height * 4, MemoryLayout<GLubyte>.size)
         let spriteContext = CGContext(data: spriteData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width*4, space: spriteImage.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         
         // 在CGContextRef上绘图
@@ -240,8 +241,8 @@ class SHGLView: UIView {
         
         
         // 加载并生成纹理
-        let fw = width
-        let fh = height;
+        let fw = width * 2
+        let fh = height * 2
         /**
          第一个参数指定了纹理目标(Target)。设置为GL_TEXTURE_2D意味着会生成与当前绑定的纹理对象在同一个目标上的纹理（任何绑定到GL_TEXTURE_1D和GL_TEXTURE_3D的纹理不会受到影响）。
          第二个参数为纹理指定多级渐远纹理的级别，如果你希望单独手动设置每个多级渐远纹理的级别的话。这里我们填0，也就是基本级别。
@@ -251,6 +252,7 @@ class SHGLView: UIView {
          第七第八个参数定义了源图的格式和数据类型。我们使用RGB值加载这个图像，并把它们储存为char(byte)数组，我们将会传入对应值。
          最后一个参数是真正的图像数据。
          */
+//        这里生成的 宽高 可以生效 纹理环绕的枚举
         glTexImage2D(GLenum(GL_TEXTURE_2D), 0, GL_RGBA, GLsizei(fw), GLsizei(fh), 0, GLenum(GL_RGBA), GLenum(GL_UNSIGNED_BYTE), spriteData);
         
         // 释放资源
