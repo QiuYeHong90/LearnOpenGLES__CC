@@ -149,15 +149,15 @@ class SHGLView: UIView {
                 glVertexAttribPointer(colorSlot, 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, colors)
                 // 启用顶点属性数据
                 glEnableVertexAttribArray(colorSlot)
-                
+                // 绘制
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
+                //  向openGLES 发起渲染命令请求
+                myContext?.presentRenderbuffer(Int(GL_RENDERBUFFER))
                 
             }
         }
         
-        // 绘制
-        glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
-        //  向openGLES 发起渲染命令请求
-        myContext?.presentRenderbuffer(Int(GL_RENDERBUFFER))
+        
         
     }
     override func layoutSubviews() {
