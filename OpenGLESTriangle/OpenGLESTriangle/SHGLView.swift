@@ -76,7 +76,7 @@ class SHGLView: UIView {
             return
         }
     }
-    //    设置 缓存对象 (帧缓存 和 渲染缓存)
+    //    设置 缓存对象 (帧缓存 和 渲染缓存) FBO 帧缓存
     fileprivate func setupBuffer() {
         // 为渲染缓存对申请id
         var buffer:GLuint = 0
