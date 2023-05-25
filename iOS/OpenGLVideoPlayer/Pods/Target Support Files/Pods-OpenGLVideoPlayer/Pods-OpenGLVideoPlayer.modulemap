@@ -1,0 +1,6 @@
+framework module Pods_OpenGLVideoPlayer {
+  umbrella header "Pods-OpenGLVideoPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}

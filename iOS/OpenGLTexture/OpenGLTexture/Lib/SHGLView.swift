@@ -168,7 +168,7 @@ class SHGLView: UIView {
             glEnableVertexAttribArray(GLuint(textCoordSlot))
 
 
-            setupTexture(fileName: "fffss.png")
+            setupTexture(fileName: "test.jpeg")
 
             // 绘制
             glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)
