@@ -8,32 +8,21 @@
 import UIKit
 
 class SHGLView: UIView {
-    enum Style {
-        /// 绘制三角形
-        case triangle
-        
-        case texture
-    }
-    
-    var style: Style = .texture
-    
-    
-    
     /// 上下文 openGL 是状态机 apple 用 EAGLContext 管理状态机
     var myContext:EAGLContext?
     //   颜色顶点缓存的唯一id
     var myColorFrameBuffer:GLuint = 0
     /// 颜色缓存的唯一id
     var myColorRenderBuffer:GLuint = 0
-    /// 程序的id
+    /// 着色器程序的id
     var myProgram:GLuint?
     
+    // 定点坐标
     var positionSlot:GLuint = 0
-
-    var colorSlot: GLuint = 0
     
+    // 纹理的ST坐标
     var textCoordSlot: GLuint = 0
-//    纹理id
+    //    纹理id
     var colorMap: GLuint = 0
     
     
@@ -192,10 +181,6 @@ class SHGLView: UIView {
             colorMap = 0
 
         }
-        
-        
-        
-        
     }
     
     func setupTexture(fileName:String) {
@@ -227,22 +212,20 @@ class SHGLView: UIView {
         let width = spriteImage.width
         let height = spriteImage.height
         // 为图片分配内存 rbga 每个像素点 4个字节 所以内存width * height * 4 个字节 一个字节 8bit
-        
-        
         let spriteData = calloc(width * height * 4, MemoryLayout<GLubyte>.size)
         let spriteContext = CGContext(data: spriteData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width*4, space: spriteImage.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         
         // 在CGContextRef上绘图
         spriteContext?.draw(spriteImage, in: CGRect(x: 0, y: 0, width: width, height: height))
         
-        // 绑定纹理到默认的纹理ID（这里只有一张图片，故而相当于默认于片元着色器里面的colorMap，如果有多张图不可以这么做）
+        
         glActiveTexture(GLenum(GL_TEXTURE0));
         glBindTexture(GLenum(GL_TEXTURE_2D), colorMap);
         
         
         // 加载并生成纹理
-        let fw = width * 2
-        let fh = height * 2
+        let fw = width
+        let fh = height
         /**
          第一个参数指定了纹理目标(Target)。设置为GL_TEXTURE_2D意味着会生成与当前绑定的纹理对象在同一个目标上的纹理（任何绑定到GL_TEXTURE_1D和GL_TEXTURE_3D的纹理不会受到影响）。
          第二个参数为纹理指定多级渐远纹理的级别，如果你希望单独手动设置每个多级渐远纹理的级别的话。这里我们填0，也就是基本级别。
