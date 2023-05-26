@@ -14,8 +14,7 @@
 		71B5D8902A1F503E001B2F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71B5D88F2A1F503E001B2F2E /* Assets.xcassets */; };
 		71B5D8932A1F503E001B2F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B5D8912A1F503E001B2F2E /* LaunchScreen.storyboard */; };
 		71B5D89C2A1F50E2001B2F2E /* MovieGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D89B2A1F50E2001B2F2E /* MovieGLView.swift */; };
-		71B5D8B52A1F66C9001B2F2E /* KxMovieDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D8B22A1F66C9001B2F2E /* KxMovieDecoder.m */; };
-		71B5D8B62A1F66C9001B2F2E /* KxAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D8B42A1F66C9001B2F2E /* KxAudioManager.m */; };
+		71D2B3712A203EF000EF5AA5 /* MovieDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D2B3702A203EF000EF5AA5 /* MovieDecode.m */; };
 		730BD7ED85FE8AB2F39638AF /* Pods_OpenGLVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DE9684628F64A55D245C1D /* Pods_OpenGLVideoPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,10 +31,8 @@
 		71B5D8942A1F503E001B2F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71B5D89B2A1F50E2001B2F2E /* MovieGLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGLView.swift; sourceTree = "<group>"; };
 		71B5D89D2A1F526D001B2F2E /* OpenGLVideoPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenGLVideoPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
-		71B5D8B12A1F66C8001B2F2E /* KxAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxAudioManager.h; sourceTree = "<group>"; };
-		71B5D8B22A1F66C9001B2F2E /* KxMovieDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMovieDecoder.m; sourceTree = "<group>"; };
-		71B5D8B32A1F66C9001B2F2E /* KxMovieDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMovieDecoder.h; sourceTree = "<group>"; };
-		71B5D8B42A1F66C9001B2F2E /* KxAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxAudioManager.m; sourceTree = "<group>"; };
+		71D2B36F2A203EF000EF5AA5 /* MovieDecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDecode.h; sourceTree = "<group>"; };
+		71D2B3702A203EF000EF5AA5 /* MovieDecode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDecode.m; sourceTree = "<group>"; };
 		72DE9684628F64A55D245C1D /* Pods_OpenGLVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenGLVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,10 +102,8 @@
 		71B5D8AD2A1F64F8001B2F2E /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				71B5D8B12A1F66C8001B2F2E /* KxAudioManager.h */,
-				71B5D8B42A1F66C9001B2F2E /* KxAudioManager.m */,
-				71B5D8B32A1F66C9001B2F2E /* KxMovieDecoder.h */,
-				71B5D8B22A1F66C9001B2F2E /* KxMovieDecoder.m */,
+				71D2B36F2A203EF000EF5AA5 /* MovieDecode.h */,
+				71D2B3702A203EF000EF5AA5 /* MovieDecode.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -238,10 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71B5D8B52A1F66C9001B2F2E /* KxMovieDecoder.m in Sources */,
+				71D2B3712A203EF000EF5AA5 /* MovieDecode.m in Sources */,
 				71B5D88B2A1F503D001B2F2E /* ViewController.swift in Sources */,
 				71B5D8872A1F503D001B2F2E /* AppDelegate.swift in Sources */,
-				71B5D8B62A1F66C9001B2F2E /* KxAudioManager.m in Sources */,
 				71B5D89C2A1F50E2001B2F2E /* MovieGLView.swift in Sources */,
 				71B5D8892A1F503D001B2F2E /* SceneDelegate.swift in Sources */,
 			);
