@@ -128,8 +128,9 @@ class SHGLView: UIView {
         
         
         
+        
         // 加载顶点数据
-        glVertexAttribPointer(positionSlot, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, vertices )
+        glVertexAttribPointer(positionSlot, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<GLfloat>.size * 3), vertices )
         glEnableVertexAttribArray(positionSlot)
         
         // 加载颜色数据
