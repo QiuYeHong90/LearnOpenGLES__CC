@@ -259,13 +259,13 @@ _ERROR:
 //        goto _ERROR;
 //    }
 //    4 打开目的文件上下文是
-    
     avformat_alloc_output_context2(&oFmtCtx, NULL, NULL, [dst cStringUsingEncoding:NSUTF8StringEncoding]);
     printf("oformat ==%s",oFmtCtx->oformat->name);
     if (oFmtCtx == NULL) {
         av_log(NULL, AV_LOG_ERROR, "NO memory \n");
         goto _ERROR;
     }
+//    分配内存给数组
     int *stream_map = av_calloc( _inputCxt->nb_streams, sizeof(int));
     int mapIdex = 0;
     for (int i = 0; i < _inputCxt->nb_streams; i++) {
@@ -273,6 +273,7 @@ _ERROR:
         AVStream * srcStream = _inputCxt->streams[i];
         AVCodecParameters * inCodecParam = srcStream->codecpar;
         if (inCodecParam->codec_type != AVMEDIA_TYPE_VIDEO && inCodecParam->codec_type != AVMEDIA_TYPE_AUDIO && inCodecParam->codec_type != AVMEDIA_TYPE_SUBTITLE) {
+//            过滤
             stream_map[i] = -1;
             continue;
         }
@@ -306,7 +307,7 @@ _ERROR:
         AVStream * srcStream;
         AVStream * outAudioStream;
         srcStream = _inputCxt->streams[pkt.stream_index];
-        if (pkt.stream_index < 0) {
+        if (stream_map[pkt.stream_index] < 0) {
             av_packet_unref(&pkt);
             continue;
         }
