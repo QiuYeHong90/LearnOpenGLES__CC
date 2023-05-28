@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHVideoDecode : NSObject
 // 提取音频流到本地
 -(int)open:(NSString *)url;
+// 抽取视频
+-(int)takeVideo:(NSString *)url;
+// 转封装
+-(int)remux:(NSString *)url;
 @end
 
 NS_ASSUME_NONNULL_END

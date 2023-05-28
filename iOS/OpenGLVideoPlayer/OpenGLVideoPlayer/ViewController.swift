@@ -16,14 +16,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        mediaModel.open("")
+//        mediaModel.open("")
     }
 
     @IBAction func takeAudio() {
 //        SHVideoDecode
         let path = Bundle.main.path(forResource: "test.mp4", ofType: nil)!
-        self.videoTool.open(path)
-        
+//        self.videoTool.open(path)
+//        self.videoTool.takeVideo(path)
+        self.videoTool.remux(path)
     }
 }
 
