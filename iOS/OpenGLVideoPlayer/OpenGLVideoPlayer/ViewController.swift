@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     var mediaModel: MovieDecode = MovieDecode.init()
     var videoTool: SHVideoDecode = SHVideoDecode.init()
+    
+    var ecodeTool: EncodeVideo = EncodeVideo.init();
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,7 +26,9 @@ class ViewController: UIViewController {
         let path = Bundle.main.path(forResource: "test.mp4", ofType: nil)!
 //        self.videoTool.open(path)
 //        self.videoTool.takeVideo(path)
-        self.videoTool.remux(path)
+//        self.videoTool.remux(path)
+        let dst = self.ecodeTool.destYUVFile()
+        self.ecodeTool.encode("h264", dst: dst)
     }
 }
 

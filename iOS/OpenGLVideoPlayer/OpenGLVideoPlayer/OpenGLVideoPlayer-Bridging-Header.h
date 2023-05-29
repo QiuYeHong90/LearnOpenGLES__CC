@@ -4,3 +4,4 @@
 
 #import "MovieDecode.h"
 #import "SHVideoDecode.h"
+#import "EncodeVideo.h"

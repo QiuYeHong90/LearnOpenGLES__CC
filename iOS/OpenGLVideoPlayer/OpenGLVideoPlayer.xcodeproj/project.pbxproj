@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04A87A302A23500A0031CD9D /* SHVideoDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A87A2E2A23500A0031CD9D /* SHVideoDecode.m */; };
 		04A87A322A23506C0031CD9D /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 04A87A312A23506C0031CD9D /* test.mp4 */; };
+		04A87A352A24E0C70031CD9D /* EncodeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A87A342A24E0C70031CD9D /* EncodeVideo.m */; };
 		71B5D8872A1F503D001B2F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D8862A1F503D001B2F2E /* AppDelegate.swift */; };
 		71B5D8892A1F503D001B2F2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D8882A1F503D001B2F2E /* SceneDelegate.swift */; };
 		71B5D88B2A1F503D001B2F2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D88A2A1F503D001B2F2E /* ViewController.swift */; };
@@ -24,6 +25,8 @@
 		04A87A2E2A23500A0031CD9D /* SHVideoDecode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHVideoDecode.m; sourceTree = "<group>"; };
 		04A87A2F2A23500A0031CD9D /* SHVideoDecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHVideoDecode.h; sourceTree = "<group>"; };
 		04A87A312A23506C0031CD9D /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		04A87A332A24E0C70031CD9D /* EncodeVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncodeVideo.h; sourceTree = "<group>"; };
+		04A87A342A24E0C70031CD9D /* EncodeVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EncodeVideo.m; sourceTree = "<group>"; };
 		240AC6898E81A321DB7087EF /* Pods-OpenGLVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenGLVideoPlayer.release.xcconfig"; path = "Target Support Files/Pods-OpenGLVideoPlayer/Pods-OpenGLVideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		24303694654B3C42B2EDAA04 /* Pods-OpenGLVideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenGLVideoPlayer.debug.xcconfig"; path = "Target Support Files/Pods-OpenGLVideoPlayer/Pods-OpenGLVideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		71B5D8832A1F503D001B2F2E /* OpenGLVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +115,8 @@
 				04A87A2E2A23500A0031CD9D /* SHVideoDecode.m */,
 				71D2B36F2A203EF000EF5AA5 /* MovieDecode.h */,
 				71D2B3702A203EF000EF5AA5 /* MovieDecode.m */,
+				04A87A332A24E0C70031CD9D /* EncodeVideo.h */,
+				04A87A342A24E0C70031CD9D /* EncodeVideo.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				71B5D88B2A1F503D001B2F2E /* ViewController.swift in Sources */,
 				71B5D8872A1F503D001B2F2E /* AppDelegate.swift in Sources */,
 				71B5D89C2A1F50E2001B2F2E /* MovieGLView.swift in Sources */,
+				04A87A352A24E0C70031CD9D /* EncodeVideo.m in Sources */,
 				04A87A302A23500A0031CD9D /* SHVideoDecode.m in Sources */,
 				71B5D8892A1F503D001B2F2E /* SceneDelegate.swift in Sources */,
 			);
