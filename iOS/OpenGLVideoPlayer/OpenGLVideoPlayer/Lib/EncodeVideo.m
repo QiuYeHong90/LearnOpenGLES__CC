@@ -6,6 +6,7 @@
 //
 
 #import <libavutil/log.h>
+#import <libavutil/opt.h>
 #import <libavcodec/avcodec.h>
 #import "EncodeVideo.h"
 static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * out);
@@ -23,7 +24,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
 }
 
 -(int)encode:(NSString *)codeName dst:(NSString *)dst {
-    AVCodec * codec = NULL;
+    const AVCodec * codec = NULL;
     AVCodecContext * ctx = NULL;
     FILE * f = NULL;
     int ret = -1;
@@ -31,9 +32,9 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
     AVPacket * pkt = NULL;
 //    1 输入参数 所生成的文件 编码器
     
-    
+    av_log_set_level(AV_LOG_DEBUG);
     // 2 查找编码器
-    codec = avcodec_find_encoder_by_name([codeName cStringUsingEncoding:NSUTF8StringEncoding]);
+    codec = avcodec_find_encoder_by_name("libx264");
     if (!codec) {
         av_log(NULL, AV_LOG_ERROR, "don't find codec \n");
         goto  _ERROR;
@@ -56,7 +57,8 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
     ctx->max_b_frames = 1;
     ctx->pix_fmt = AV_PIX_FMT_YUV420P;
     if (codec->id == AV_CODEC_ID_H264) {
-        av_dict_set(ctx->priv_data, "preset", "slow", AV_DICT_DONT_STRDUP_KEY | AV_DICT_DONT_STRDUP_VAL);
+        av_opt_set(ctx->priv_data, "preset", "slow", 0);
+//        av_dict_set(ctx->priv_data, "preset", "slow", AV_DICT_DONT_STRDUP_KEY | AV_DICT_DONT_STRDUP_VAL);
     }
 //    5 编码器与编码器上下文绑定到一起
     ret = avcodec_open2(ctx, codec, NULL);
@@ -76,6 +78,8 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
         av_log(NULL, AV_LOG_ERROR, "no memory \n");
         goto  _ERROR;
     }
+    frame->width = ctx->width;
+    frame->height = ctx->height;
     ret = av_frame_get_buffer(frame, 0);
     if (ret < 0) {
         av_log(ctx, AV_LOG_ERROR, "dont allocate frame buffer %s \n",av_err2str(ret));

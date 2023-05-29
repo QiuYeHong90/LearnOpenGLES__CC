@@ -5,7 +5,7 @@
 //  Created by Ray on 2023/5/25.
 //
 
-
+import ffmpegkit
 import UIKit
 
 class ViewController: UIViewController {
@@ -22,13 +22,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func takeAudio() {
+        let jj = FFmpegKit.execute("-encoders")
 //        SHVideoDecode
         let path = Bundle.main.path(forResource: "test.mp4", ofType: nil)!
 //        self.videoTool.open(path)
 //        self.videoTool.takeVideo(path)
 //        self.videoTool.remux(path)
         let dst = self.ecodeTool.destYUVFile()
-        self.ecodeTool.encode("h264", dst: dst)
+        self.ecodeTool.encode("libx264", dst: dst)
     }
 }
 
