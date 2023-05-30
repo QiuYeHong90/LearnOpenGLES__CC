@@ -84,6 +84,7 @@ int encodeF(char * codeName,const char * dst) {
     }
     frame->width = ctx->width;
     frame->height = ctx->height;
+    frame->format = ctx->pix_fmt;
     ret = av_frame_get_buffer(frame, 0);
     if (ret < 0) {
         av_log(ctx, AV_LOG_ERROR, "dont allocate frame buffer %s \n",av_err2str(ret));
