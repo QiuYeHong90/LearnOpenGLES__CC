@@ -154,7 +154,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
         av_log(NULL, AV_LOG_ERROR, "failed to send to codec");
         goto _END;
     }
-    while (ret > 0) {
+    while (ret >= 0) {
         ret = avcodec_receive_packet(ctx, pkt);
         // AVERROR_EOF 编码缓冲区没有数据了 AVERROR(EAGAIN) 编码出错了
         if (ret == AVERROR_EOF || ret == AVERROR(EAGAIN)) {

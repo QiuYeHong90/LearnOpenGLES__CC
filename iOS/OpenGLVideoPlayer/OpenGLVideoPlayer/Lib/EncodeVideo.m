@@ -80,6 +80,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
     }
     frame->width = ctx->width;
     frame->height = ctx->height;
+    frame->format = ctx->pix_fmt;
     ret = av_frame_get_buffer(frame, 0);
     if (ret < 0) {
         av_log(ctx, AV_LOG_ERROR, "dont allocate frame buffer %s \n",av_err2str(ret));
@@ -152,7 +153,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
         av_log(NULL, AV_LOG_ERROR, "failed to send to codec");
         goto _END;
     }
-    while (ret > 0) {
+    while (ret >= 0) {
         ret = avcodec_receive_packet(ctx, pkt);
         // AVERROR_EOF 编码缓冲区没有数据了 AVERROR(EAGAIN) 编码出错了
         if (ret == AVERROR_EOF || ret == AVERROR(EAGAIN)) {
