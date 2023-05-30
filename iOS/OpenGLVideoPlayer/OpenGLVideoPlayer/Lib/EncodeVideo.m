@@ -17,7 +17,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
 //    NSHomeDirectory()
     NSString * dir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     NSLog(@"[NSFileManager.defaultManager fileExistsAtPath:dir] == %ld \n %@",[NSFileManager.defaultManager fileExistsAtPath:dir],NSHomeDirectory());
-    dir = [dir stringByAppendingPathComponent:@"tests.mov"];
+    dir = [dir stringByAppendingPathComponent:@"tests.h264"];
     
     return dir;
     

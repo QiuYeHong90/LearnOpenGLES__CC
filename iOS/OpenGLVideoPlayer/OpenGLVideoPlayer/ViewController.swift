@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func takeAudio() {
-        let jj = FFmpegKit.execute("-encoders")
+//        let jj = FFmpegKit.execute("-encoders")
 //        SHVideoDecode
         let path = Bundle.main.path(forResource: "test.mp4", ofType: nil)!
 //        self.videoTool.open(path)
