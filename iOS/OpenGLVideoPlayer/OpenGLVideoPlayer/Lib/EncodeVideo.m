@@ -34,7 +34,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
     
     av_log_set_level(AV_LOG_DEBUG);
     // 2 查找编码器
-    codec = avcodec_find_encoder_by_name("libx264");
+    codec = avcodec_find_encoder_by_name([codeName cStringUsingEncoding:NSUTF8StringEncoding]);
     if (!codec) {
         av_log(NULL, AV_LOG_ERROR, "don't find codec \n");
         goto  _ERROR;
@@ -54,6 +54,7 @@ static int encode(AVCodecContext * ctx,AVFrame * frame, AVPacket * pkt, FILE * o
     ctx->framerate = (AVRational){25,1};
 //    10 真为1组
     ctx->gop_size = 10;
+    // 最大b帧
     ctx->max_b_frames = 1;
     ctx->pix_fmt = AV_PIX_FMT_YUV420P;
     if (codec->id == AV_CODEC_ID_H264) {
