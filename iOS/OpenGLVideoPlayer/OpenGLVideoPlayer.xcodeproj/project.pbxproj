@@ -19,6 +19,7 @@
 		71B5D89C2A1F50E2001B2F2E /* MovieGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D89B2A1F50E2001B2F2E /* MovieGLView.swift */; };
 		71D2B3712A203EF000EF5AA5 /* MovieDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D2B3702A203EF000EF5AA5 /* MovieDecode.m */; };
 		730BD7ED85FE8AB2F39638AF /* Pods_OpenGLVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DE9684628F64A55D245C1D /* Pods_OpenGLVideoPlayer.framework */; };
+		9D5681FA2A3566860014607B /* EncodeAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5681F92A3566860014607B /* EncodeAudio.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		71D2B36F2A203EF000EF5AA5 /* MovieDecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDecode.h; sourceTree = "<group>"; };
 		71D2B3702A203EF000EF5AA5 /* MovieDecode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDecode.m; sourceTree = "<group>"; };
 		72DE9684628F64A55D245C1D /* Pods_OpenGLVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenGLVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D5681F82A3566860014607B /* EncodeAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncodeAudio.h; sourceTree = "<group>"; };
+		9D5681F92A3566860014607B /* EncodeAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EncodeAudio.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				71D2B3702A203EF000EF5AA5 /* MovieDecode.m */,
 				04A87A332A24E0C70031CD9D /* EncodeVideo.h */,
 				04A87A342A24E0C70031CD9D /* EncodeVideo.m */,
+				9D5681F82A3566860014607B /* EncodeAudio.h */,
+				9D5681F92A3566860014607B /* EncodeAudio.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5681FA2A3566860014607B /* EncodeAudio.m in Sources */,
 				71D2B3712A203EF000EF5AA5 /* MovieDecode.m in Sources */,
 				71B5D88B2A1F503D001B2F2E /* ViewController.swift in Sources */,
 				71B5D8872A1F503D001B2F2E /* AppDelegate.swift in Sources */,
